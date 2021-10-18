@@ -4,6 +4,8 @@ using System.Collections;
 public class BlockCollision : MonoBehaviour
 {
     public PlayerMovement movement;
+    public Counter CounterScript;
+    public GameObject Camera;
 
     public AudioSource Week;
     public AudioSource Task;
@@ -11,6 +13,8 @@ public class BlockCollision : MonoBehaviour
 
     private bool isEntered = false;
     private bool isDone = false;
+
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -25,8 +29,6 @@ public class BlockCollision : MonoBehaviour
                 PlaySound();
             }
             
-
-            
         }
     }
 
@@ -35,6 +37,11 @@ public class BlockCollision : MonoBehaviour
             Week.Play();
             Task.PlayDelayed(Week.clip.length);
             Instruction.PlayDelayed(Week.clip.length + Task.clip.length);
+    }
+
+    void Start()
+    {
+        CounterScript = Camera.GetComponent<Counter>();
     }
 
     void Update()
@@ -52,6 +59,7 @@ public class BlockCollision : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.N) && isEntered && !isDone)
         {
             movement.enabled = true;
+            CounterScript.totalAmount -= 1;
 
             isEntered = false;
         }
