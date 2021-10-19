@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class StopWatch : MonoBehaviour
 {
+    public PlayerMovement movement;
+
     public float timeStart;
     public Text textBox;
     public Text startBtnText;
 
-    bool timerActive = false;
+    public bool timerActive = false;
 
     // Start is called before the first frame update
     void Start()
@@ -31,5 +33,13 @@ public class StopWatch : MonoBehaviour
     {
         timerActive = !timerActive;
         startBtnText.text = timerActive ? "Pause" : "Start";
+
+        if (timerActive)
+        {
+            movement.enabled = true;
+        } else
+        {
+            movement.enabled = false;
+        }
     }
 }

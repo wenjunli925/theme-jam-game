@@ -11,7 +11,7 @@ public class BlockCollision : MonoBehaviour
     public AudioSource Task;
     public AudioSource Instruction;
 
-    private bool isEntered = false;
+    public bool isEntered = false;
     private bool isDone = false;
 
     
