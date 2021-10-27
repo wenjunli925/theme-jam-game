@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (transform.position.z < 4)
+        if (transform.position.z < 4 )
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
                 transform.position += moveDirection * speed;
             }
         }
-        if (transform.position.z > 1)
+        if (transform.position.z > 1 && transform.position.x > -5)
         {
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {

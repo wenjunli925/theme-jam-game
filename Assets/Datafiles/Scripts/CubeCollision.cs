@@ -5,14 +5,17 @@ public class CubeCollision : MonoBehaviour
     public AudioSource Week;
     public bool isEntered = false;
 
+    private GameObject Clock;
+
     private void Start()
     {
-        Week = GetComponent<AudioSource>();
-
+        Clock = GameObject.Find("Main Camera");
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!enabled) return;
+
         if (other.tag == "Player")
         { 
 
@@ -21,6 +24,11 @@ public class CubeCollision : MonoBehaviour
             isEntered = true;
 
             Week.Play();
+        }
+
+        if (gameObject.name == "A21_W32")
+        {
+            Clock.GetComponent<StopWatch>().timerActive = true;
         }
     }
 }
