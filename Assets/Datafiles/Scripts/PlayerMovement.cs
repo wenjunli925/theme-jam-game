@@ -1,54 +1,108 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 0.1f;
 
-    //private float xDirection = 0.0f;
-    //private float zDirection = 0.0f;
+    InputActions actions;
+
+    private void Awake()
+    {
+        actions = new InputActions();
+
+        actions.Player.Up.performed += ctx => MoveUp();
+        actions.Player.Down.performed += ctx => MoveDown();
+        actions.Player.Left.performed += ctx => MoveLeft();
+        actions.Player.Right.performed += ctx => MoveRight();
+    }
+
+    void MoveUp()
+    {
+        if (transform.position.z < 4)
+        {
+                Vector3 moveDirection = new Vector3(0.0f, 0.0f, 1.0f);
+                transform.position += moveDirection * speed;
+        }
+    }
+
+    void MoveDown()
+    {
+        if (transform.position.z > 1 && transform.position.x > -5)
+        {
+                Vector3 moveDirection = new Vector3(0.0f, 0.0f, -1.0f);
+                transform.position += moveDirection * speed;
+        }
+    }
+
+    void MoveLeft()
+    {
+        if (transform.position.x > -4)
+        {
+                Vector3 moveDirection = new Vector3(-1.0f, 0.0f, 0.0f);
+                transform.position += moveDirection * speed;
+        }
+    }
+
+    void MoveRight()
+    {
+        if (transform.position.x < -1)
+        {
+                Vector3 moveDirection = new Vector3(1.0f, 0.0f, 0.0f);
+                transform.position += moveDirection * speed;
+        }
+    }
+
+    private void OnEnable()
+    {
+        actions.Player.Enable();
+    }
+
+    private void OnDisable()
+    {
+        actions.Player.Disable();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        //Vector3 moveDirection = new Vector3(xDirection, 0.0f, zDirection);
-        if(transform.position.x > -4)
-        {
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                Vector3 moveDirection = new Vector3(-1.0f, 0.0f, 0.0f);
-                transform.position += moveDirection * speed;
-            }
-        }
 
-        if(transform.position.x < -1)
-        {
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                Vector3 moveDirection = new Vector3(1.0f, 0.0f, 0.0f);
-                transform.position += moveDirection * speed;
-            }
-        }
+        //if (transform.position.x > -4)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.LeftArrow))
+        //    {
+        //        Vector3 moveDirection = new Vector3(-1.0f, 0.0f, 0.0f);
+        //        transform.position += moveDirection * speed;
+        //    }
+        //}
 
-        if (transform.position.z < 4 )
-        {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                Vector3 moveDirection = new Vector3(0.0f, 0.0f, 1.0f);
-                transform.position += moveDirection * speed;
-            }
-        }
-        if (transform.position.z > 1 && transform.position.x > -5)
-        {
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                Vector3 moveDirection = new Vector3(0.0f, 0.0f, -1.0f);
-                transform.position += moveDirection * speed;
-            }
-        }
-            
+        //if (transform.position.x < -1)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.RightArrow))
+        //    {
+        //        Vector3 moveDirection = new Vector3(1.0f, 0.0f, 0.0f);
+        //        transform.position += moveDirection * speed;
+        //    }
+        //}
 
-        ////xDirection = Input.GetAxis("Horizontal");
-        ////zDirection = Input.GetAxis("Vertical");
+        //if (transform.position.z < 4)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.UpArrow))
+        //    {
+        //        Vector3 moveDirection = new Vector3(0.0f, 0.0f, 1.0f);
+        //        transform.position += moveDirection * speed;
+        //    }
+        //}
+        //if (transform.position.z > 1 && transform.position.x > -5)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.DownArrow))
+        //    {
+        //        Vector3 moveDirection = new Vector3(0.0f, 0.0f, -1.0f);
+        //        transform.position += moveDirection * speed;
+        //    }
+        //}
+
 
     }
 }

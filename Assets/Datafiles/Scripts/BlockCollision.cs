@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.InputSystem;
 
 public class BlockCollision : MonoBehaviour
 {
@@ -21,6 +22,86 @@ public class BlockCollision : MonoBehaviour
     public bool isDone = false;
 
     public bool taskPushable = false;
+
+    InputActions actions;
+
+    private void Awake()
+    {
+        actions = new InputActions();
+
+        actions.Player.Yes.performed += ctx => YPressed();
+        actions.Player.No.performed += ctx => NPressed();
+
+    }
+
+    void YPressed()
+    {
+        if (isEntered && !isDone)
+        {
+            movement.enabled = false;
+
+            StartCoroutine(DelayEnableMovement(5));
+
+            isEntered = true;
+
+
+            if (taskPushable)
+            {
+                TransferTarget.GetComponent<BlockCollision>().enabled = false;
+                TransferTarget.GetComponent<CubeCollision>().enabled = true;
+            }
+
+        }
+
+    }
+
+    void NPressed()
+    {
+        if (isEntered && !isDone)
+        {
+            if (taskPushable)
+            {
+                movement.enabled = true;
+                //feedback.isUnlocked = true;
+
+                CounterScript.totalAmount -= 1;
+
+                isEntered = true;
+
+
+                transfer.Transfer();
+                TransferTarget.GetComponent<BlockCollision>().enabled = true;
+                TransferTarget.GetComponent<CubeCollision>().enabled = false;
+
+                gameObject.GetComponent<BlockCollision>().enabled = false;
+                gameObject.GetComponent<CubeCollision>().enabled = true;
+            }
+            else
+            {
+                movement.enabled = false;
+                feedback.isUnlocked = false;
+                feedback.PlayNopeSound();
+
+                isEntered = true;
+
+            }
+
+        }
+
+    }
+
+
+
+    private void OnEnable()
+    {
+        actions.Player.Enable();
+    }
+
+    private void OnDisable()
+    {
+        actions.Player.Disable();
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -57,57 +138,57 @@ public class BlockCollision : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Y) && isEntered && !isDone)
-        {
-            movement.enabled = false;
-            
-            StartCoroutine(DelayEnableMovement(5));
+        //if (Input.GetKeyDown(KeyCode.Y) && isEntered && !isDone)
+        //{
+        //    movement.enabled = false;
 
-            
-
-            isEntered = true;
-            
+        //    StartCoroutine(DelayEnableMovement(5));
 
 
-            if (taskPushable)
-            {
-                TransferTarget.GetComponent<BlockCollision>().enabled = false;
-                TransferTarget.GetComponent<CubeCollision>().enabled = true;
-            }
-            
 
-        }
-
-        if (Input.GetKeyDown(KeyCode.N) && isEntered && !isDone)
-        {
-            if (taskPushable)
-            {
-                movement.enabled = true;
-                //feedback.isUnlocked = true;
-
-                CounterScript.totalAmount -= 1;
-
-                isEntered = true;
+        //    isEntered = true;
 
 
-                transfer.Transfer();
-                TransferTarget.GetComponent<BlockCollision>().enabled = true;
-                TransferTarget.GetComponent<CubeCollision>().enabled = false;
 
-                gameObject.GetComponent<BlockCollision>().enabled = false;
-                gameObject.GetComponent<CubeCollision>().enabled = true;
-            }
-            else
-            {
-                movement.enabled = false;
-                feedback.isUnlocked = false;
-                feedback.PlayNopeSound();
+        //    if (taskPushable)
+        //    {
+        //        TransferTarget.GetComponent<BlockCollision>().enabled = false;
+        //        TransferTarget.GetComponent<CubeCollision>().enabled = true;
+        //    }
 
-                isEntered = true;
 
-            }
-            
-        }
+        //}
+
+        //if (Input.GetKeyDown(KeyCode.N) && isEntered && !isDone)
+        //{
+        //    if (taskPushable)
+        //    {
+        //        movement.enabled = true;
+        //        //feedback.isUnlocked = true;
+
+        //        CounterScript.totalAmount -= 1;
+
+        //        isEntered = true;
+
+
+        //        transfer.Transfer();
+        //        TransferTarget.GetComponent<BlockCollision>().enabled = true;
+        //        TransferTarget.GetComponent<CubeCollision>().enabled = false;
+
+        //        gameObject.GetComponent<BlockCollision>().enabled = false;
+        //        gameObject.GetComponent<CubeCollision>().enabled = true;
+        //    }
+        //    else
+        //    {
+        //        movement.enabled = false;
+        //        feedback.isUnlocked = false;
+        //        feedback.PlayNopeSound();
+
+        //        isEntered = true;
+
+        //    }
+
+        //}
     }
 
     IEnumerator DelayEnableMovement(float delayTime)
