@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
         actions.Player.Down.performed += ctx => MoveDown();
         actions.Player.Left.performed += ctx => MoveLeft();
         actions.Player.Right.performed += ctx => MoveRight();
+        actions.Player.LastYear.performed += ctx => MovetoLastYear();
+        actions.Player.NextYear.performed += ctx => MovetoNextYear();
     }
 
     void MoveUp()
@@ -53,6 +55,25 @@ public class PlayerMovement : MonoBehaviour
                 transform.position += moveDirection * speed;
         }
     }
+
+    void MovetoLastYear()
+    {
+        if (transform.position.y < 4.5 && transform.position.x > -5)
+        {
+            Vector3 moveDirection = new Vector3(0.0f, 1.0f, 0.0f);
+            transform.position += moveDirection * speed;
+        }
+    }
+
+    void MovetoNextYear()
+    {
+        if (transform.position.y > 0.5 && transform.position.x > -5)
+        {
+            Vector3 moveDirection = new Vector3(0.0f, -1.0f, 0.0f);
+            transform.position += moveDirection * speed;
+        }
+    }
+
 
     private void OnEnable()
     {

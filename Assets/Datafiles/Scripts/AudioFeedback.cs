@@ -5,9 +5,21 @@ using UnityEngine.InputSystem;
 
 public class AudioFeedback : MonoBehaviour
 {
-    public AudioSource YSound;
-    public AudioSource NSound;
+    public AudioSource YesSound;
+    public AudioSource NoSound;
+
     public AudioSource Nope;
+
+    public AudioSource Instruction;
+
+    public AudioSource Up;
+    public AudioSource Down;
+    public AudioSource Left;
+    public AudioSource Right;
+    public AudioSource LastYear;
+    public AudioSource NextYear;
+    
+
     public bool isUnlocked;
 
     InputActions actions;
@@ -19,13 +31,24 @@ public class AudioFeedback : MonoBehaviour
         actions.Player.Yes.performed += ctx => YPressed();
         actions.Player.No.performed += ctx => NPressed();
 
+        actions.Player.Insturction.performed += ctx => SayInstruction();
+
+
+        actions.Player.Up.performed += ctx => MoveUp();
+        actions.Player.Down.performed += ctx => MoveDown();
+        actions.Player.Left.performed += ctx => MoveLeft();
+        actions.Player.Right.performed += ctx => MoveRight();
+        actions.Player.LastYear.performed += ctx => MovetoLastYear();
+        actions.Player.NextYear.performed += ctx => MovetoNextYear();
+
+
     }
 
     void YPressed()
     {
         if (!isUnlocked)
         {
-            YSound.Play();
+            YesSound.Play();
 
             StartCoroutine(DelayEnableMovement(5));
 
@@ -37,9 +60,62 @@ public class AudioFeedback : MonoBehaviour
     {
         if (!isUnlocked)
         {
-            NSound.Play();
+            NoSound.Play();
             isUnlocked = true;
 
+        }
+    }
+
+    void SayInstruction()
+    {
+        Instruction.Play();
+    }
+
+    void MoveLeft()
+    {
+        if (isUnlocked)
+        {
+            Left.Play();
+        }
+    }
+
+    void MoveRight()
+    {
+        if (isUnlocked)
+        {
+            Right.Play();
+        }
+    }
+
+    void MoveUp()
+    {
+        if (isUnlocked)
+        {
+            Up.Play();
+        }
+    }
+
+    void MoveDown()
+    {
+        if (isUnlocked)
+        {
+            Down.Play();
+        }
+    }
+
+    void MovetoLastYear()
+    {
+        if (isUnlocked)
+        {
+            LastYear.Play();
+        }
+    }
+
+    void MovetoNextYear()
+    {
+        if (isUnlocked)
+        {
+            NextYear.Play();
         }
     }
 
@@ -94,7 +170,7 @@ public class AudioFeedback : MonoBehaviour
         //Wait for the specified delay time before continuing.
         yield return new WaitForSeconds(delayTime);
 
-        NSound.Play();
+        NoSound.Play();
         isUnlocked = true;
     }
 

@@ -6,38 +6,6 @@
             "id": "e0ccb602-52b7-4f8d-b671-93fc088122a6",
             "actions": [
                 {
-                    "name": "Up",
-                    "type": "Button",
-                    "id": "e13c18a3-aa0f-4391-a4e8-2b14805f36f9",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Down",
-                    "type": "Button",
-                    "id": "3a747538-0814-412a-9045-9d2f7e733b9f",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Left",
-                    "type": "Button",
-                    "id": "08534c45-430f-4958-a8f6-74ca54ad1834",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Right",
-                    "type": "Button",
-                    "id": "ecc8f591-516a-49d9-8019-770e6246d066",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Yes",
                     "type": "Button",
                     "id": "6ee07955-2d5c-4ee4-8e43-573470653426",
@@ -52,53 +20,73 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "LastYear",
+                    "type": "Button",
+                    "id": "4d30c02c-7bcd-4023-bcd4-d461375dac23",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "NextYear",
+                    "type": "Button",
+                    "id": "a14be649-90c7-48e2-8f32-03eeaaccef19",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Locate",
+                    "type": "PassThrough",
+                    "id": "653a30c1-afb8-4b65-8868-8afb9b67a48f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Up",
+                    "type": "Button",
+                    "id": "e13c18a3-aa0f-4391-a4e8-2b14805f36f9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(pressPoint=1)"
+                },
+                {
+                    "name": "Down",
+                    "type": "Button",
+                    "id": "3a747538-0814-412a-9045-9d2f7e733b9f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(pressPoint=1)"
+                },
+                {
+                    "name": "Left",
+                    "type": "Button",
+                    "id": "08534c45-430f-4958-a8f6-74ca54ad1834",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(pressPoint=1)"
+                },
+                {
+                    "name": "Right",
+                    "type": "Button",
+                    "id": "ecc8f591-516a-49d9-8019-770e6246d066",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(pressPoint=1)"
+                },
+                {
+                    "name": "Insturction",
+                    "type": "Button",
+                    "id": "42a2ad98-87ee-45ac-8bfd-a8aae5c766fc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "aa02b7a8-0f1f-41cd-ab27-1f97e90166b0",
-                    "path": "<DualShockGamepad>/dpad/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Up",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f7a2bc18-0b5a-4453-b469-df44bbefef39",
-                    "path": "<DualShockGamepad>/dpad/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Down",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0f346393-293c-4b1a-ba3f-23158573b7b2",
-                    "path": "<DualShockGamepad>/dpad/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Left",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "19e45842-25d7-4d24-82d0-484ad50f53f4",
-                    "path": "<DualShockGamepad>/dpad/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Right",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "26c23bf7-11e6-42ff-8806-04de1baa8104",
@@ -118,6 +106,94 @@
                     "processors": "",
                     "groups": "",
                     "action": "No",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "addc2136-e4e3-461f-b4ea-76d88a4efbf7",
+                    "path": "<DualShockGamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LastYear",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dcb0b459-c881-401b-95d5-d620c1123cec",
+                    "path": "<DualShockGamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextYear",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "09c614e4-b880-4631-8ed6-c8ccc1fafdcd",
+                    "path": "<DualShockGamepad>/buttonEast",
+                    "interactions": "MultiTap",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Locate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "19e45842-25d7-4d24-82d0-484ad50f53f4",
+                    "path": "<DualShockGamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0f346393-293c-4b1a-ba3f-23158573b7b2",
+                    "path": "<DualShockGamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f7a2bc18-0b5a-4453-b469-df44bbefef39",
+                    "path": "<DualShockGamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Down",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "aa02b7a8-0f1f-41cd-ab27-1f97e90166b0",
+                    "path": "<DualShockGamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5fe68e8b-02a4-428e-b6c1-311e0e54c650",
+                    "path": "<DualShockGamepad>/buttonEast",
+                    "interactions": "Hold(pressPoint=0.8)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Insturction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

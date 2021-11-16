@@ -13,13 +13,17 @@ public class BlockCollision : MonoBehaviour
 
  
     public AudioSource Week;
+    public AudioSource Day;
+
     public AudioSource Task;
-    public AudioSource Instruction;
+    //public AudioSource Instruction;
 
     public Material Done;
 
     public bool isEntered = false;
     public bool isDone = false;
+
+    public bool isMonday = false;
 
     public bool taskPushable = false;
 
@@ -32,6 +36,7 @@ public class BlockCollision : MonoBehaviour
         actions.Player.Yes.performed += ctx => YPressed();
         actions.Player.No.performed += ctx => NPressed();
 
+        actions.Player.Locate.performed += ctx => TellLocation();
     }
 
     void YPressed()
@@ -90,6 +95,15 @@ public class BlockCollision : MonoBehaviour
 
     }
 
+    void TellLocation()
+    {
+        if (isEntered)
+        {
+            Week.Play();
+        }
+
+    }
+
 
 
     private void OnEnable()
@@ -123,12 +137,57 @@ public class BlockCollision : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (!enabled) return;
+
+        if (other.tag == "Player")
+        {
+
+            Debug.Log("Player left!");
+
+            isEntered = false;
+
+        }
+    }
+
     private void PlaySound()
     {
-            Week.Play();
-            Task.PlayDelayed(Week.clip.length);
-            Instruction.PlayDelayed(Week.clip.length + Task.clip.length);
+        StartCoroutine(DelayPlaySound(1));
+    }
 
+
+    IEnumerator DelayEnableMovement(float delayTime)
+    {
+        //Wait for the specified delay time before continuing.
+        yield return new WaitForSeconds(delayTime);
+        isDone = true;
+
+        movement.enabled = true;
+        //feedback.isUnlocked = true;
+
+        gameObject.GetComponent<MeshRenderer>().material = Done;
+
+        gameObject.GetComponent<CubeCollision>().enabled = true;
+    }
+
+    IEnumerator DelayPlaySound(float delayTime)
+    {
+        //Wait for the specified delay time before continuing.
+        yield return new WaitForSeconds(delayTime);
+
+        if (isMonday)
+        {
+            Day.PlayDelayed(Week.clip.length);
+            Task.PlayDelayed(Week.clip.length + Day.clip.length);
+            //Instruction.PlayDelayed(Week.clip.length + Day.clip.length + Task.clip.length);
+        }
+        else
+        {
+            Day.Play();
+            Task.PlayDelayed(Day.clip.length);
+            //Instruction.PlayDelayed(Day.clip.length + Task.clip.length);
+        }
     }
 
     void Start()
@@ -189,19 +248,5 @@ public class BlockCollision : MonoBehaviour
         //    }
 
         //}
-    }
-
-    IEnumerator DelayEnableMovement(float delayTime)
-    {
-        //Wait for the specified delay time before continuing.
-        yield return new WaitForSeconds(delayTime);
-        isDone = true;
-
-        movement.enabled = true;
-        //feedback.isUnlocked = true;
-
-        gameObject.GetComponent<MeshRenderer>().material = Done;
-
-        gameObject.GetComponent<CubeCollision>().enabled = true;
     }
 }
