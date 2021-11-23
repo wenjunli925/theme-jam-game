@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class BlockCollision : MonoBehaviour
 {
     public PlayerMovement movement;
-    public Counter CounterScript;
+    //public Counter CounterScript;
     public AudioFeedback feedback;
     public TransferTasks transfer;
 
@@ -44,6 +44,7 @@ public class BlockCollision : MonoBehaviour
         if (isEntered && !isDone)
         {
             movement.enabled = false;
+            feedback.isUnlocked = false;
 
             StartCoroutine(DelayEnableMovement(5));
 
@@ -69,7 +70,7 @@ public class BlockCollision : MonoBehaviour
                 movement.enabled = true;
                 //feedback.isUnlocked = true;
 
-                CounterScript.totalAmount -= 1;
+                //CounterScript.totalAmount -= 1;
 
                 isEntered = true;
 
@@ -178,6 +179,7 @@ public class BlockCollision : MonoBehaviour
 
         if (isMonday)
         {
+            Week.Play();
             Day.PlayDelayed(Week.clip.length);
             Task.PlayDelayed(Week.clip.length + Day.clip.length);
             //Instruction.PlayDelayed(Week.clip.length + Day.clip.length + Task.clip.length);

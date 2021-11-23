@@ -7,6 +7,7 @@ public class EndGame : MonoBehaviour
     public StopWatch StopWatchScript;
     //public GameObject Camera;
     public AudioSource EndOfTheGame;
+    public AudioSource BGM;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,7 @@ public class EndGame : MonoBehaviour
     {
         //Wait for the specified delay time before continuing.
         yield return new WaitForSeconds(delayTime);
-
+        BGM.Stop();
         EndOfTheGame.Play();
     }
 }

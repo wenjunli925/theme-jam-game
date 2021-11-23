@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed = 0.1f;
 
+    public AudioFeedback feedback;
+
     InputActions actions;
 
     private void Awake()
@@ -26,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
         {
                 Vector3 moveDirection = new Vector3(0.0f, 0.0f, 1.0f);
                 transform.position += moveDirection * speed;
+                feedback.isUnlocked = true;
         }
     }
 
@@ -35,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
         {
                 Vector3 moveDirection = new Vector3(0.0f, 0.0f, -1.0f);
                 transform.position += moveDirection * speed;
+                feedback.isUnlocked = true;
         }
     }
 
@@ -44,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
         {
                 Vector3 moveDirection = new Vector3(-1.0f, 0.0f, 0.0f);
                 transform.position += moveDirection * speed;
+                feedback.isUnlocked = true;
         }
     }
 
@@ -53,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
         {
                 Vector3 moveDirection = new Vector3(1.0f, 0.0f, 0.0f);
                 transform.position += moveDirection * speed;
+                feedback.isUnlocked = true;
         }
     }
 
@@ -62,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector3 moveDirection = new Vector3(0.0f, 1.0f, 0.0f);
             transform.position += moveDirection * speed;
+            feedback.isUnlocked = true;
         }
     }
 
@@ -71,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector3 moveDirection = new Vector3(0.0f, -1.0f, 0.0f);
             transform.position += moveDirection * speed;
+            feedback.isUnlocked = true;
         }
     }
 

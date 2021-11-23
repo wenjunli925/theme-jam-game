@@ -5,7 +5,7 @@ using UnityEngine;
 public class TransferTasks : MonoBehaviour
 {
     public GameObject Task;
-    public GameObject Instruction;
+    //public GameObject Instruction;
 
     public Transform NewParent;
     public GameObject TransferTarget;
@@ -31,7 +31,7 @@ public class TransferTasks : MonoBehaviour
     public void Transfer()
     {
         Task.transform.SetParent(NewParent);
-        Instruction.transform.SetParent(NewParent);
+        //Instruction.transform.SetParent(NewParent);
 
         gameObject.GetComponent<MeshRenderer>().material = Normal;
         TransferTarget.GetComponent<MeshRenderer>().material = Block;

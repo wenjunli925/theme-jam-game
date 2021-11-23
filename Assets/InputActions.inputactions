@@ -27,7 +27,7 @@
                     "id": "4d30c02c-7bcd-4023-bcd4-d461375dac23",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press(pressPoint=1)"
                 },
                 {
                     "name": "NextYear",
@@ -35,11 +35,11 @@
                     "id": "a14be649-90c7-48e2-8f32-03eeaaccef19",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press(pressPoint=1)"
                 },
                 {
                     "name": "Locate",
-                    "type": "PassThrough",
+                    "type": "Button",
                     "id": "653a30c1-afb8-4b65-8868-8afb9b67a48f",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -90,7 +90,7 @@
                 {
                     "name": "",
                     "id": "26c23bf7-11e6-42ff-8806-04de1baa8104",
-                    "path": "<DualShockGamepad>/buttonNorth",
+                    "path": "<DualShockGamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -112,7 +112,7 @@
                 {
                     "name": "",
                     "id": "addc2136-e4e3-461f-b4ea-76d88a4efbf7",
-                    "path": "<DualShockGamepad>/dpad/up",
+                    "path": "<DualShockGamepad>/rightStick/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -123,7 +123,7 @@
                 {
                     "name": "",
                     "id": "dcb0b459-c881-401b-95d5-d620c1123cec",
-                    "path": "<DualShockGamepad>/dpad/down",
+                    "path": "<DualShockGamepad>/rightStick/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -134,8 +134,8 @@
                 {
                     "name": "",
                     "id": "09c614e4-b880-4631-8ed6-c8ccc1fafdcd",
-                    "path": "<DualShockGamepad>/buttonEast",
-                    "interactions": "MultiTap",
+                    "path": "<DualShockGamepad>/buttonNorth",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Locate",
@@ -189,8 +189,8 @@
                 {
                     "name": "",
                     "id": "5fe68e8b-02a4-428e-b6c1-311e0e54c650",
-                    "path": "<DualShockGamepad>/buttonEast",
-                    "interactions": "Hold(pressPoint=0.8)",
+                    "path": "<DualShockGamepad>/buttonWest",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Insturction",

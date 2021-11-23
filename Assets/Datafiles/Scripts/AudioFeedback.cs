@@ -8,6 +8,7 @@ public class AudioFeedback : MonoBehaviour
     public AudioSource YesSound;
     public AudioSource NoSound;
 
+    public AudioSource FiveSecs;
     public AudioSource Nope;
 
     public AudioSource Instruction;
@@ -49,6 +50,7 @@ public class AudioFeedback : MonoBehaviour
         if (!isUnlocked)
         {
             YesSound.Play();
+            FiveSecs.PlayDelayed(YesSound.clip.length);
 
             StartCoroutine(DelayEnableMovement(5));
 
@@ -136,7 +138,7 @@ public class AudioFeedback : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        isUnlocked = true;
+        isUnlocked = false;
     }
 
     // Update is called once per frame
