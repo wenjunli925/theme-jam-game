@@ -29,6 +29,11 @@ public class PlayerMovement : MonoBehaviour
                 Vector3 moveDirection = new Vector3(0.0f, 0.0f, 1.0f);
                 transform.position += moveDirection * speed;
                 feedback.isUnlocked = true;
+
+            feedback.wall = false;
+        } else
+        {
+            feedback.wall = true;
         }
     }
 
@@ -39,6 +44,12 @@ public class PlayerMovement : MonoBehaviour
                 Vector3 moveDirection = new Vector3(0.0f, 0.0f, -1.0f);
                 transform.position += moveDirection * speed;
                 feedback.isUnlocked = true;
+
+            feedback.wall = false;
+        }
+        else
+        {
+            feedback.wall = true;
         }
     }
 
@@ -49,6 +60,12 @@ public class PlayerMovement : MonoBehaviour
                 Vector3 moveDirection = new Vector3(-1.0f, 0.0f, 0.0f);
                 transform.position += moveDirection * speed;
                 feedback.isUnlocked = true;
+
+            feedback.wall = false;
+        }
+        else
+        {
+            feedback.wall = true;
         }
     }
 
@@ -59,6 +76,12 @@ public class PlayerMovement : MonoBehaviour
                 Vector3 moveDirection = new Vector3(1.0f, 0.0f, 0.0f);
                 transform.position += moveDirection * speed;
                 feedback.isUnlocked = true;
+
+            feedback.wall = false;
+        }
+        else
+        {
+            feedback.wall = true;
         }
     }
 
@@ -69,6 +92,12 @@ public class PlayerMovement : MonoBehaviour
             Vector3 moveDirection = new Vector3(0.0f, 1.0f, 0.0f);
             transform.position += moveDirection * speed;
             feedback.isUnlocked = true;
+
+            feedback.wall = false;
+        }
+        else
+        {
+            feedback.wall = true;
         }
     }
 
@@ -79,6 +108,12 @@ public class PlayerMovement : MonoBehaviour
             Vector3 moveDirection = new Vector3(0.0f, -1.0f, 0.0f);
             transform.position += moveDirection * speed;
             feedback.isUnlocked = true;
+
+            feedback.wall = false;
+        }
+        else
+        {
+            feedback.wall = true;
         }
     }
 

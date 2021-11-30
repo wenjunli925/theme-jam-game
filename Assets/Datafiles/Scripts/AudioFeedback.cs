@@ -13,6 +13,8 @@ public class AudioFeedback : MonoBehaviour
 
     public AudioSource Instruction;
 
+    public AudioSource Wall;
+
     public AudioSource Up;
     public AudioSource Down;
     public AudioSource Left;
@@ -22,6 +24,7 @@ public class AudioFeedback : MonoBehaviour
     
 
     public bool isUnlocked;
+    public bool wall;
 
     InputActions actions;
 
@@ -73,9 +76,20 @@ public class AudioFeedback : MonoBehaviour
         Instruction.Play();
     }
 
+    void HittheWall()
+    {
+        if (isUnlocked & wall)
+        {
+            Wall.Play();
+            wall = false;
+            
+        }
+        
+    }
+
     void MoveLeft()
     {
-        if (isUnlocked)
+        if (isUnlocked & !wall)
         {
             Left.Play();
         }
@@ -83,7 +97,7 @@ public class AudioFeedback : MonoBehaviour
 
     void MoveRight()
     {
-        if (isUnlocked)
+        if (isUnlocked & !wall)
         {
             Right.Play();
         }
@@ -91,7 +105,7 @@ public class AudioFeedback : MonoBehaviour
 
     void MoveUp()
     {
-        if (isUnlocked)
+        if (isUnlocked & !wall)
         {
             Up.Play();
         }
@@ -99,7 +113,7 @@ public class AudioFeedback : MonoBehaviour
 
     void MoveDown()
     {
-        if (isUnlocked)
+        if (isUnlocked & !wall)
         {
             Down.Play();
         }
@@ -107,7 +121,7 @@ public class AudioFeedback : MonoBehaviour
 
     void MovetoLastYear()
     {
-        if (isUnlocked)
+        if (isUnlocked & !wall)
         {
             LastYear.Play();
         }
@@ -115,7 +129,7 @@ public class AudioFeedback : MonoBehaviour
 
     void MovetoNextYear()
     {
-        if (isUnlocked)
+        if (isUnlocked & !wall)
         {
             NextYear.Play();
         }
@@ -144,20 +158,10 @@ public class AudioFeedback : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Y) && !isUnlocked)
-        //{
-        //    YSound.Play();
-
-        //    StartCoroutine(DelayEnableMovement(5));
-
-        //}
-
-        //if (Input.GetKeyDown(KeyCode.N) && !isUnlocked)
-        //{
-        //    NSound.Play();
-        //    isUnlocked = true;
-
-        //}
+        if (wall)
+        {
+            HittheWall();
+        }
 
 
     }
