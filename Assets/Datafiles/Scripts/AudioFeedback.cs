@@ -25,6 +25,7 @@ public class AudioFeedback : MonoBehaviour
 
     public bool isUnlocked;
     public bool wall;
+    public bool isMoved;
 
     InputActions actions;
 
@@ -80,11 +81,11 @@ public class AudioFeedback : MonoBehaviour
     {
         if (isUnlocked & wall)
         {
-            Wall.Play();
+            Wall.PlayDelayed(0.8f);
             wall = false;
-            
+
         }
-        
+
     }
 
     void MoveLeft()
@@ -92,7 +93,10 @@ public class AudioFeedback : MonoBehaviour
         if (isUnlocked & !wall)
         {
             Left.Play();
+            
         }
+
+        
     }
 
     void MoveRight()
@@ -100,7 +104,10 @@ public class AudioFeedback : MonoBehaviour
         if (isUnlocked & !wall)
         {
             Right.Play();
+            
         }
+
+        
     }
 
     void MoveUp()

@@ -20,6 +20,10 @@ public class PlayerMovement : MonoBehaviour
         actions.Player.Right.performed += ctx => MoveRight();
         actions.Player.LastYear.performed += ctx => MovetoLastYear();
         actions.Player.NextYear.performed += ctx => MovetoNextYear();
+
+        Vector3 moveDirection = new Vector3(1.0f, 0.0f, 0.0f);
+        transform.position += moveDirection * speed;
+        feedback.isUnlocked = true;
     }
 
     void MoveUp()
@@ -30,10 +34,10 @@ public class PlayerMovement : MonoBehaviour
                 transform.position += moveDirection * speed;
                 feedback.isUnlocked = true;
 
-            feedback.wall = false;
+                feedback.wall = false;
         } else
         {
-            feedback.wall = true;
+                feedback.wall = true;
         }
     }
 
@@ -45,11 +49,11 @@ public class PlayerMovement : MonoBehaviour
                 transform.position += moveDirection * speed;
                 feedback.isUnlocked = true;
 
-            feedback.wall = false;
+                feedback.wall = false;
         }
         else
         {
-            feedback.wall = true;
+                feedback.wall = true;
         }
     }
 
@@ -57,15 +61,19 @@ public class PlayerMovement : MonoBehaviour
     {
         if (transform.position.x > -4)
         {
+                feedback.wall = false;
+
                 Vector3 moveDirection = new Vector3(-1.0f, 0.0f, 0.0f);
                 transform.position += moveDirection * speed;
+               
                 feedback.isUnlocked = true;
 
-            feedback.wall = false;
+                
         }
         else
         {
-            feedback.wall = true;
+              
+                feedback.wall = true;
         }
     }
 
@@ -73,15 +81,19 @@ public class PlayerMovement : MonoBehaviour
     {
         if (transform.position.x < -1)
         {
+                feedback.wall = false;
+
                 Vector3 moveDirection = new Vector3(1.0f, 0.0f, 0.0f);
                 transform.position += moveDirection * speed;
+    
                 feedback.isUnlocked = true;
 
-            feedback.wall = false;
+                
         }
         else
         {
-            feedback.wall = true;
+          
+                feedback.wall = true;
         }
     }
 
@@ -89,15 +101,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (transform.position.y < 4.5 && transform.position.x > -5)
         {
-            Vector3 moveDirection = new Vector3(0.0f, 1.0f, 0.0f);
-            transform.position += moveDirection * speed;
-            feedback.isUnlocked = true;
+                Vector3 moveDirection = new Vector3(0.0f, 1.0f, 0.0f);
+                transform.position += moveDirection * speed;
+                feedback.isUnlocked = true;
 
-            feedback.wall = false;
+                feedback.wall = false;
         }
         else
         {
-            feedback.wall = true;
+                feedback.wall = true;
         }
     }
 
@@ -105,15 +117,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (transform.position.y > 0.5 && transform.position.x > -5)
         {
-            Vector3 moveDirection = new Vector3(0.0f, -1.0f, 0.0f);
-            transform.position += moveDirection * speed;
-            feedback.isUnlocked = true;
+                Vector3 moveDirection = new Vector3(0.0f, -1.0f, 0.0f);
+                transform.position += moveDirection * speed;
+                feedback.isUnlocked = true;
 
-            feedback.wall = false;
+                feedback.wall = false;
         }
         else
         {
-            feedback.wall = true;
+                feedback.wall = true;
         }
     }
 
